@@ -5,7 +5,7 @@ using ZMario.Engine;
 
 namespace ZMario
 {
-    public class Game1 : Game
+    public class MarioGame : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -13,7 +13,7 @@ namespace ZMario
         private GameLogger gameLogger = new GameLogger();
         private WarningLogger warnLogger = new WarningLogger();
 
-        public Game1()
+        public MarioGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -51,7 +51,7 @@ namespace ZMario
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.MonoGameOrange);
 
             // TODO: Add your drawing code here
 

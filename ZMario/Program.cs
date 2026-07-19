@@ -1,2 +1,2 @@
-﻿using var game = new ZMario.Game1();
+﻿using var game = new ZMario.MarioGame();
 game.Run();

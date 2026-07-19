@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using ZMario.Engine;
+using ZMario.GameObjects;
 
 namespace ZMario
 {
@@ -11,6 +14,8 @@ namespace ZMario
         private SpriteBatch _spriteBatch;
 
         private Texture2D tileset;
+
+        private List<GameComponent> componentsList = new List<GameComponent>();
 
         private GameLogger gameLogger = new GameLogger();
         private WarningLogger warnLogger = new WarningLogger();
@@ -41,6 +46,10 @@ namespace ZMario
             // TODO: use this.Content to load your game content here
             gameLogger.Log("Loading textures");
             tileset = Texture2D.FromFile(GraphicsDevice, "MarioResources/tileset.png");
+
+            Texture2D spritesheet = Texture2D.FromFile(GraphicsDevice, "MarioResources/spritesheet.png");
+            PlayerController mario = new PlayerController(this, spritesheet);
+            componentsList.Add(mario);
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,6 +58,11 @@ namespace ZMario
                 Exit();
 
             // TODO: Add your update logic here
+
+            foreach (GameComponent comp in componentsList)
+            {
+                comp.Update(gameTime);
+            }
 
             base.Update(gameTime);
         }
@@ -60,12 +74,25 @@ namespace ZMario
             // TODO: Add your drawing code here
 
             // Draw the sprite batch.
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(
-                tileset,
-                Vector2.Zero,
-                new Rectangle(0, 0, 16, 16),
-                Color.White);
+            _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+
+            foreach (GameComponent comp in componentsList)
+            {
+                if (comp is AnimatedGameComponent animComp)
+                {
+                    _spriteBatch.Draw(
+                        animComp.Atlas,
+                        new Vector2(0, 0),
+                        animComp.Region,
+                        Color.White,
+                        0f,
+                        Vector2.Zero,
+                        2f,
+                        SpriteEffects.None,
+                        0f);
+                }
+            }
+
             _spriteBatch.End();
 
             base.Draw(gameTime);

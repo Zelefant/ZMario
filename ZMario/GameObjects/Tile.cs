@@ -9,13 +9,15 @@ namespace ZMario.GameObjects
 {
     internal class Tile : GameComponent
     {
-        public Tile(Game game, TileSet tileSet, Rectangle tileRect) 
+        public Tile(Game game, TileSet tileSet, Rectangle tileRect, int tileID) 
             : base(game)
         {
             _TileSet = tileSet;
             _TileRect = tileRect;
+            _TileID = tileID;
         }
 
+        public int _TileID { get; }
         public TileSet _TileSet { get; }
         public Rectangle _TileRect { get; }
     }

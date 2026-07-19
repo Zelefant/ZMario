@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ZMario.Engine
 {
-    internal class GameLogger : ILogger
+    internal class WarningLogger : ILogger
     {
-        public string Name => "GAME";
+        public string Name => "WARN";
 
-        public ConsoleColor color => ConsoleColor.White;
+        public ConsoleColor color => ConsoleColor.Yellow;
 
         public void Log(string message)
         {

@@ -82,7 +82,7 @@ namespace ZMario
                 {
                     _spriteBatch.Draw(
                         animComp.Atlas,
-                        new Vector2(0, 0),
+                        animComp.Position,
                         animComp.Region,
                         Color.White,
                         0f,

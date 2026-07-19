@@ -15,8 +15,8 @@ namespace ZMario.GameObjects
         // Physics fields
         private float gr_acceleration = 1.0f;
         private float gr_friction = 1.0f;
-        private float gr_maxSpeed = 10f;
-        private float gr_maxRunSpeed = 15f;
+        private float gr_maxSpeed = 5f;
+        private float gr_maxRunSpeed = 10f;
 
         
 
@@ -31,6 +31,7 @@ namespace ZMario.GameObjects
         public override void Update(GameTime gameTime)
         {
             this.UpdateAnimation(gameTime);
+            this.Position = new Vector2(this.Position.X + gr_maxSpeed, this.Position.Y);
         }
 
         /// <summary>

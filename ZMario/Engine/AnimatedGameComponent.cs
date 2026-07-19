@@ -11,7 +11,7 @@ namespace ZMario.Engine
     /// <summary>
     /// Extended GameComponent for components that require animations.
     /// </summary>
-    internal class AnimatedGameComponent : GameComponent
+    internal class AnimatedGameComponent : MarioGameComponent
     {
         protected Texture2D atlas;
         protected Dictionary<string, Animation> animations;

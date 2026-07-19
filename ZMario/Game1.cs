@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ZMario.Engine;
 
 namespace ZMario
 {
@@ -8,6 +9,9 @@ namespace ZMario
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        private GameLogger gameLogger = new GameLogger();
+        private WarningLogger warnLogger = new WarningLogger();
 
         public Game1()
         {
@@ -22,6 +26,9 @@ namespace ZMario
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            gameLogger.Log("Setting up game...");
+            warnLogger.Log("This is a prototype!");
+            gameLogger.Log("Systems booting up...");
             base.Initialize();
         }
 

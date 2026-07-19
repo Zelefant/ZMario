@@ -11,5 +11,7 @@ namespace ZMario.Engine
         void Log(string message);
 
         string Name { get; }
+
+        ConsoleColor color { get; }
     }
 }

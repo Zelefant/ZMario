@@ -9,5 +9,7 @@ namespace ZMario.Engine
     internal interface ILogger
     {
         void Log(string message);
+
+        string Name { get; }
     }
 }

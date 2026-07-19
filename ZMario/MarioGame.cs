@@ -14,6 +14,7 @@ namespace ZMario
         private SpriteBatch _spriteBatch;
 
         private Texture2D tileset;
+        private InputHandler input = new InputHandler();
 
         private List<GameComponent> componentsList = new List<GameComponent>();
 
@@ -35,7 +36,14 @@ namespace ZMario
             // TODO: Add your initialization logic here
             gameLogger.Log("Setting up game...");
             warnLogger.Log("This is a prototype!");
-            gameLogger.Log("Systems booting up...");
+
+            // Basic keybind loader
+            gameLogger.Log("Loading keybinds");
+            input.RegisterKeybind("move_r", Keys.Right);
+            input.RegisterKeybind("move_l", Keys.Left);
+            input.RegisterKeybind("jump", Keys.Space);
+            input.RegisterKeybind("run", Keys.LeftShift);
+
             base.Initialize();
         }
 
@@ -48,7 +56,7 @@ namespace ZMario
             tileset = Texture2D.FromFile(GraphicsDevice, "MarioResources/tileset.png");
 
             Texture2D spritesheet = Texture2D.FromFile(GraphicsDevice, "MarioResources/spritesheet.png");
-            PlayerController mario = new PlayerController(this, spritesheet);
+            PlayerController mario = new PlayerController(this, spritesheet, input);
             componentsList.Add(mario);
         }
 
@@ -56,6 +64,9 @@ namespace ZMario
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            // Get Input
+            input.Update();
 
             // TODO: Add your update logic here
 

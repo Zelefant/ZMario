@@ -13,16 +13,20 @@ namespace ZMario.GameObjects
     internal class PlayerController : AnimatedGameComponent
     {
         // Physics fields
-        private float gr_acceleration = 1.0f;
-        private float gr_friction = 1.0f;
-        private float gr_maxSpeed = 5f;
-        private float gr_maxRunSpeed = 10f;
+        private float gr_acceleration = 15.0f;
+        private float gr_friction = 10.0f;
+        private float gr_maxSpeed = 2.5f;
+        private float gr_maxRunSpeed = 5f;
 
-        
+        private Vector2 velocity = Vector2.Zero;
 
-        public PlayerController(Game game, Texture2D atlas) 
+        // Input handler
+        InputHandler input;
+
+        public PlayerController(Game game, Texture2D atlas, InputHandler input) 
             : base(game, atlas)
         {
+            this.input = input;
             elapsedAnimTime = TimeSpan.Zero;
             LoadDefaultMarioAnimations();
         }
@@ -30,8 +34,49 @@ namespace ZMario.GameObjects
 
         public override void Update(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            this.GroundMovement(deltaTime);
+            this.Move();
             this.UpdateAnimation(gameTime);
-            this.Position = new Vector2(this.Position.X + gr_maxSpeed, this.Position.Y);
+        }
+
+        public void GroundMovement(float deltaTime)
+        {
+            if (input.IsActionPressed("move_r") && !input.IsActionPressed("move_l"))
+            {
+                velocity.X += gr_acceleration * deltaTime;
+            }
+            else if (input.IsActionPressed("move_l") && !input.IsActionPressed("move_r"))
+            {
+                velocity.X -= gr_acceleration * deltaTime;
+            }
+            else
+            {
+                if (velocity.X < 0)
+                {
+                    if (velocity.X + gr_friction * deltaTime > 0) { velocity.X = 0; }
+                    else { velocity.X += gr_friction * deltaTime; }
+                }
+                else if (velocity.X > 0)
+                {
+                    if (velocity.X - gr_friction * deltaTime < 0) { velocity.X = 0; }
+                    else { velocity.X -= gr_friction * deltaTime; }
+                }
+            }
+
+            if (velocity.X > gr_maxSpeed)
+            {
+                velocity.X = gr_maxSpeed;
+            }
+            else if (velocity.X < -gr_maxSpeed)
+            {
+                velocity.X = -gr_maxSpeed;
+            }
+        }
+
+        private void Move()
+        {
+            this.Position += velocity;
         }
 
         /// <summary>

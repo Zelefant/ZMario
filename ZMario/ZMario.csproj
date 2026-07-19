@@ -29,4 +29,12 @@
   <ItemGroup>
     <Folder Include="MarioResources\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="MarioResources\spritesheet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MarioResources\tileset.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -10,6 +10,8 @@ namespace ZMario
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private Texture2D tileset;
+
         private GameLogger gameLogger = new GameLogger();
         private WarningLogger warnLogger = new WarningLogger();
 
@@ -37,6 +39,8 @@ namespace ZMario
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            gameLogger.Log("Loading textures");
+            tileset = Texture2D.FromFile(GraphicsDevice, "MarioResources/tileset.png");
         }
 
         protected override void Update(GameTime gameTime)
@@ -54,6 +58,11 @@ namespace ZMario
             GraphicsDevice.Clear(Color.MonoGameOrange);
 
             // TODO: Add your drawing code here
+
+            // Draw the sprite batch.
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(tileset, Vector2.Zero, Color.White);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ZMario.GameObjects
 {
+    /// <summary>
+    /// Tiles are non-animated static objects on a grid in the world.
+    /// </summary>
     internal class Tile : GameComponent
     {
         public Tile(Game game, TileSet tileSet, Rectangle tileRect, int tileID) 

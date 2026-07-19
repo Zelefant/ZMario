@@ -61,7 +61,11 @@ namespace ZMario
 
             // Draw the sprite batch.
             _spriteBatch.Begin();
-            _spriteBatch.Draw(tileset, Vector2.Zero, Color.White);
+            _spriteBatch.Draw(
+                tileset,
+                Vector2.Zero,
+                new Rectangle(0, 0, 16, 16),
+                Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

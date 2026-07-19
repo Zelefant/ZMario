@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZMario.Engine
+namespace ZMario.GameObjects
 {
     internal class PlayerController : GameComponent
     {

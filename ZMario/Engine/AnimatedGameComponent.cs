@@ -21,10 +21,9 @@ namespace ZMario.Engine
         protected TimeSpan elapsedAnimTime;
         protected Rectangle spriteRect;
 
-        public AnimatedGameComponent(Game game, Texture2D atlas)
+        public AnimatedGameComponent(Game game)
             : base(game)
         {
-            this.atlas = atlas;
             this.animations = new Dictionary<string, Animation>();
         }
 

@@ -56,7 +56,7 @@ namespace ZMario
             tileset = Texture2D.FromFile(GraphicsDevice, "MarioResources/tileset.png");
 
             Texture2D spritesheet = Texture2D.FromFile(GraphicsDevice, "MarioResources/spritesheet.png");
-            PlayerController mario = new PlayerController(this, spritesheet, input);
+            PlayerController mario = new PlayerController(this, input);
             componentsList.Add(mario);
         }
 

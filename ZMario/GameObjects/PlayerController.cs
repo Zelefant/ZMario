@@ -21,14 +21,26 @@ namespace ZMario.GameObjects
         private Vector2 velocity = Vector2.Zero;
 
         // Input handler
-        InputHandler input;
+        IInputHandler input;
 
-        public PlayerController(Game game, Texture2D atlas, InputHandler input) 
-            : base(game, atlas)
+        public PlayerController(Game game, IInputHandler input) 
+            : base(game)
         {
             this.input = input;
             elapsedAnimTime = TimeSpan.Zero;
             LoadDefaultMarioAnimations();
+        }
+
+        public Vector2 Velocity
+        {
+            get
+            {
+                return velocity;
+            }
+            set
+            {
+                velocity = value;
+            }
         }
 
 

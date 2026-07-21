@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZMario.Engine
 {
-    public class InputHandler
+    public class InputHandler : IInputHandler
     {
         KeyboardState oldState = new KeyboardState(); // Last frame
         KeyboardState newState = new KeyboardState(); // Current frame
@@ -34,7 +34,7 @@ namespace ZMario.Engine
         /// <param name="key">Key to bind to the action.</param>
         public void RegisterKeybind(string actionName, Keys key)
         {
-            this.actions.Add(actionName, key);
+            this.actions[actionName] = key;
         }
 
         public void Update()
@@ -67,6 +67,11 @@ namespace ZMario.Engine
             }
 
             return false;
+        }
+
+        public bool IsActionJustReleased(string actionName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

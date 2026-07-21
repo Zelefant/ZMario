@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZMario.Engine
 {
-    internal class MarioGameComponent : GameComponent
+    public class MarioGameComponent : GameComponent
     {
         Vector2 position = Vector2.Zero;
 

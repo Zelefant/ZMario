@@ -10,7 +10,7 @@ using ZMario.Engine;
 
 namespace ZMario.GameObjects
 {
-    internal class PlayerController : AnimatedGameComponent
+    public class PlayerController : AnimatedGameComponent
     {
         // Physics fields
         private float gr_acceleration = 15.0f;

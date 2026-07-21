@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZMario.Engine
 {
-    internal class InputHandler
+    public class InputHandler
     {
         KeyboardState oldState = new KeyboardState(); // Last frame
         KeyboardState newState = new KeyboardState(); // Current frame
@@ -17,6 +17,14 @@ namespace ZMario.Engine
         public InputHandler()
         {
 
+        }
+
+        public Dictionary<string, Keys> KeyboardActions
+        {
+            get
+            {
+                return actions;
+            }
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZMario.Engine
 {
-    internal class Animation
+    public class Animation
     {
 
         public Animation()

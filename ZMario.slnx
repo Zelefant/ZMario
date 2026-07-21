@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="ZMario/ZMario.csproj" />
+  <Project Path="ZMarioTests/ZMarioTests.csproj" Id="c7be3a83-3e99-4586-ba91-ae77faa0effc" />
 </Solution>
